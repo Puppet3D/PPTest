@@ -6,6 +6,81 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="settings-hidden">
+  <!-- Auth Header -->
+  <header class="auth-header" id="auth-header">
+    <div class="auth-header__inner">
+      <button type="button" class="auth-header__btn" id="auth-login-btn">Login</button>
+      <div class="auth-header__account" id="auth-account-btn" style="display: none;">
+        <span class="auth-header__email" id="auth-user-email">Account</span>
+        <button type="button" class="auth-header__btn auth-header__btn--logout" id="auth-logout-btn">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Login Modal -->
+  <div class="login-modal" id="login-modal">
+    <div class="login-modal__content">
+      <button type="button" class="login-modal__close" id="close-login-modal" aria-label="Close login modal">×</button>
+      <h2 class="login-modal__title">Login to Puppet3D</h2>
+      
+      <div class="login-modal__error" id="auth-error-message"></div>
+
+      <!-- Google Sign-In -->
+      <button type="button" class="login-modal__btn login-modal__btn--google" id="google-login-btn">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.64 9.20454C17.64 8.56636 17.5827 7.95272 17.4764 7.36363H9V10.845H13.8436C13.635 11.97 13.0009 12.9231 12.0477 13.5613V15.8195H14.9564C16.6582 14.2527 17.64 11.9454 17.64 9.20454Z" fill="#4285F4"/>
+          <path d="M9 18C11.43 18 13.467 17.1941 14.9564 15.8195L12.0477 13.5613C11.2418 14.1013 10.2109 14.4204 9 14.4204C6.65454 14.4204 4.67181 12.8372 3.96409 10.71H0.957275V13.0418C2.43818 15.9831 5.48181 18 9 18Z" fill="#34A853"/>
+          <path d="M3.96409 10.71C3.78409 10.17 3.68182 9.59318 3.68182 9C3.68182 8.40681 3.78409 7.83 3.96409 7.29V4.95818H0.957273C0.347727 6.17318 0 7.54772 0 9C0 10.4523 0.347727 11.8268 0.957273 13.0418L3.96409 10.71Z" fill="#FBBC05"/>
+          <path d="M9 3.57955C10.3214 3.57955 11.5077 4.03364 12.4405 4.92545L15.0218 2.34409C13.4632 0.891818 11.4259 0 9 0C5.48182 0 2.43818 2.01682 0.957275 4.95818L3.96409 7.29C4.67182 5.16273 6.65454 3.57955 9 3.57955Z" fill="#EA4335"/>
+        </svg>
+        Continue with Google
+      </button>
+
+      <div class="login-modal__divider">
+        <span>or</span>
+      </div>
+
+      <!-- Email/Password Forms -->
+      <form class="login-modal__form" id="login-form">
+        <div class="login-modal__field">
+          <label for="email-input" class="login-modal__label">Email</label>
+          <input type="email" id="email-input" class="login-modal__input" required autocomplete="email" />
+        </div>
+        <div class="login-modal__field">
+          <label for="password-input" class="login-modal__label">Password</label>
+          <input type="password" id="password-input" class="login-modal__input" required autocomplete="current-password" />
+        </div>
+        <button type="submit" class="login-modal__btn login-modal__btn--primary" id="email-submit-btn">Sign In</button>
+        <p class="login-modal__switch">
+          Don't have an account? <a href="#" id="signup-link">Sign up</a>
+        </p>
+      </form>
+
+      <form class="login-modal__form" id="signup-form" style="display: none;">
+        <div class="login-modal__field">
+          <label for="signup-email-input" class="login-modal__label">Email</label>
+          <input type="email" id="signup-email-input" class="login-modal__input" required autocomplete="email" />
+        </div>
+        <div class="login-modal__field">
+          <label for="signup-password-input" class="login-modal__label">Password</label>
+          <input type="password" id="signup-password-input" class="login-modal__input" required autocomplete="new-password" minlength="6" />
+        </div>
+        <button type="submit" class="login-modal__btn login-modal__btn--primary" id="signup-submit-btn">Sign Up</button>
+        <p class="login-modal__switch">
+          Already have an account? <a href="#" id="login-link">Sign in</a>
+        </p>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Ancla visual del hero (punto de referencia del scroll automático) -->
+  <div class="hero-anchor" id="hero-anchor" aria-hidden="true">
+    <div class="hero-anchor__threshold hero-anchor__threshold--above"></div>
+    <div class="hero-anchor__line"></div>
+    <div class="hero-anchor__threshold hero-anchor__threshold--below"></div>
+    <div class="hero-anchor__label">Hero Anchor</div>
+  </div>
+  
   <section class="hero-section" id="hero-section">
     <video class="hero-section__video" id="hero-video" src="videos/Hero.mp4" muted loop playsinline autoplay aria-hidden="true"></video>
     <div class="hero-section__overlay is-gradient" id="hero-overlay" aria-hidden="true"></div>
@@ -22,9 +97,17 @@
     </div>
   </section>
 
+  <!-- Ancla visual de la galería (punto de referencia del scroll automático) -->
+  <div class="gallery-anchor" id="gallery-anchor" aria-hidden="true">
+    <div class="gallery-anchor__threshold gallery-anchor__threshold--above"></div>
+    <div class="gallery-anchor__line"></div>
+    <div class="gallery-anchor__threshold gallery-anchor__threshold--below"></div>
+    <div class="gallery-anchor__label">Gallery Anchor</div>
+  </div>
+
   <main class="page" id="content">
     <section class="grid">
-      <article class="card c1" data-tags="ux">
+      <article class="card c1" data-tags="ux" data-product-id="product-1">
         <div class="card-inner">
           <div class="card-face card-front">
             <span class="card-tag">UX</span>
@@ -37,14 +120,13 @@
             <div class="card-back-content">
               <span class="card-tag">UX</span>
               <p>1 · Stack: HTML, CSS, JS. Enfoque en conversión y performance.</p>
-              <a class="cta" href="#">Ver caso</a>
+              <button type="button" class="cta buy-btn" style="display: none;">Buy</button>
             </div>
           </div>
         </div>
-        <div class="muppet" aria-hidden="true"><img src="images/muppet%2002.png" alt="" class="muppet-default" /><img src="images/muppet.png" alt="" class="muppet-hover" /></div>
       </article>
 
-      <article class="card c2" data-tags="dev">
+      <article class="card c2" data-tags="dev" data-product-id="product-2">
         <div class="card-inner">
           <div class="card-face card-front">
             <span class="card-tag">Dev</span>
@@ -57,14 +139,13 @@
             <div class="card-back-content">
               <span class="card-tag">Dev</span>
               <p>2 · Componentes reutilizables y gráficos responsivos.</p>
-              <a class="cta" href="#">Ver caso</a>
+              <button type="button" class="cta buy-btn" style="display: none;">Buy</button>
             </div>
           </div>
         </div>
-        <div class="muppet" aria-hidden="true"><img src="images/muppet%2002.png" alt="" class="muppet-default" /><img src="images/muppet.png" alt="" class="muppet-hover" /></div>
       </article>
 
-      <article class="card c3" data-tags="ux">
+      <article class="card c3" data-tags="ux" data-product-id="product-3">
         <div class="card-inner">
           <div class="card-face card-front">
             <span class="card-tag">UX</span>
@@ -77,14 +158,13 @@
             <div class="card-back-content">
               <span class="card-tag">UX</span>
               <p>3 · Mejora de UX y tasas de conversión.</p>
-              <a class="cta" href="#">Ver caso</a>
+              <button type="button" class="cta buy-btn" style="display: none;">Buy</button>
             </div>
           </div>
         </div>
-        <div class="muppet" aria-hidden="true"><img src="images/muppet%2002.png" alt="" class="muppet-default" /><img src="images/muppet.png" alt="" class="muppet-hover" /></div>
       </article>
 
-      <article class="card c4" data-tags="dev">
+      <article class="card c4" data-tags="dev" data-product-id="product-4">
         <div class="card-inner">
           <div class="card-face card-front">
             <span class="card-tag">Dev</span>
@@ -97,14 +177,13 @@
             <div class="card-back-content">
               <span class="card-tag">Dev</span>
               <p>4 · Prototipado rápido y pruebas con usuarios.</p>
-              <a class="cta" href="#">Ver caso</a>
+              <button type="button" class="cta buy-btn" style="display: none;">Buy</button>
             </div>
           </div>
         </div>
-        <div class="muppet" aria-hidden="true"><img src="images/muppet%2002.png" alt="" class="muppet-default" /><img src="images/muppet.png" alt="" class="muppet-hover" /></div>
       </article>
 
-      <article class="card c5" data-tags="ux">
+      <article class="card c5" data-tags="ux" data-product-id="product-5">
         <div class="card-inner">
           <div class="card-face card-front">
             <span class="card-tag">UX</span>
@@ -117,11 +196,10 @@
             <div class="card-back-content">
               <span class="card-tag">UX</span>
               <p>5 · Iteración con feedback y pruebas A/B.</p>
-              <a class="cta" href="#">Ver caso</a>
+              <button type="button" class="cta buy-btn" style="display: none;">Buy</button>
             </div>
           </div>
         </div>
-        <div class="muppet" aria-hidden="true"><img src="images/muppet%2002.png" alt="" class="muppet-default" /><img src="images/muppet.png" alt="" class="muppet-hover" /></div>
       </article>
 
       <article class="card c1" data-tags="dev">
@@ -137,11 +215,10 @@
             <div class="card-back-content">
               <span class="card-tag">Dev</span>
               <p>6 · Herramientas para acelerar el flujo de trabajo.</p>
-              <a class="cta" href="#">Ver caso</a>
+              <button type="button" class="cta buy-btn" style="display: none;">Buy</button>
             </div>
           </div>
         </div>
-        <div class="muppet" aria-hidden="true"><img src="images/muppet%2002.png" alt="" class="muppet-default" /><img src="images/muppet.png" alt="" class="muppet-hover" /></div>
       </article>
 
       <article class="card c2" data-tags="ux">
@@ -157,11 +234,10 @@
             <div class="card-back-content">
               <span class="card-tag">UX</span>
               <p>7 · Hallazgos clave y recomendaciones.</p>
-              <a class="cta" href="#">Ver caso</a>
+              <button type="button" class="cta buy-btn" style="display: none;">Buy</button>
             </div>
           </div>
         </div>
-        <div class="muppet" aria-hidden="true"><img src="images/muppet%2002.png" alt="" class="muppet-default" /><img src="images/muppet.png" alt="" class="muppet-hover" /></div>
       </article>
 
       <article class="card c3" data-tags="dev">
@@ -177,11 +253,10 @@
             <div class="card-back-content">
               <span class="card-tag">Dev</span>
               <p>8 · Conectores y sincronización de datos.</p>
-              <a class="cta" href="#">Ver caso</a>
+              <button type="button" class="cta buy-btn" style="display: none;">Buy</button>
             </div>
           </div>
         </div>
-        <div class="muppet" aria-hidden="true"><img src="images/muppet%2002.png" alt="" class="muppet-default" /><img src="images/muppet.png" alt="" class="muppet-hover" /></div>
       </article>
 
       <article class="card c4" data-tags="ux">
@@ -197,11 +272,10 @@
             <div class="card-back-content">
               <span class="card-tag">UX</span>
               <p>9 · Auditoría y ajustes de accesibilidad.</p>
-              <a class="cta" href="#">Ver caso</a>
+              <button type="button" class="cta buy-btn" style="display: none;">Buy</button>
             </div>
           </div>
         </div>
-        <div class="muppet" aria-hidden="true"><img src="images/muppet%2002.png" alt="" class="muppet-default" /><img src="images/muppet.png" alt="" class="muppet-hover" /></div>
       </article>
     </section>
   </main>
@@ -351,25 +425,25 @@
         <span>Activar</span>
         <input type="checkbox" id="kf-trigger-enable" checked />
       </label>
-      <label class="trigger-scroll-ui__row">
-        <span>Salir de %</span>
-        <input type="number" id="kf-trigger-threshold" value="5" min="0" max="100" />
+      <label class="trigger-scroll-ui__row" title="0% = inicio del hero">
+        <span>Hero Anchor % (0 = inicio hero)</span>
+        <input type="number" id="kf-trigger-hero-anchor" value="0" min="0" max="100" />
+      </label>
+      <label class="trigger-scroll-ui__row" title="Rango de threshold: si el viewport top sale de este rango (arriba o abajo), se dispara el scroll">
+        <span>Threshold Gallery (px)</span>
+        <input type="number" id="kf-trigger-threshold-px" value="250" />
       </label>
       <label class="trigger-scroll-ui__row" title="100% = inicio del grid (donde empieza el contenido)">
-        <span>Destino % (100 = inicio grid)</span>
+        <span>Gallery Anchor % (100 = inicio grid)</span>
         <input type="number" id="kf-trigger-target" value="100" min="0" max="100" />
       </label>
       <label class="trigger-scroll-ui__row trigger-scroll-ui__row--checkbox">
         <span>Inversa</span>
         <input type="checkbox" id="kf-trigger-inverse" checked />
       </label>
-      <label class="trigger-scroll-ui__row">
-        <span>Salir de %</span>
-        <input type="number" id="kf-trigger-inverse-leave" value="100" min="0" max="100" />
-      </label>
-      <label class="trigger-scroll-ui__row">
-        <span>Volver a %</span>
-        <input type="number" id="kf-trigger-inverse-goback" value="0" min="0" max="100" />
+      <label class="trigger-scroll-ui__row" title="Rango de threshold: si el viewport top sale de este rango (arriba o abajo), se dispara el scroll inverso">
+        <span>Threshold Hero (px)</span>
+        <input type="number" id="kf-trigger-inverse-threshold-px" value="20" />
       </label>
     </div>
   </aside>
@@ -470,23 +544,15 @@
   </aside>
   </div>
 
-  <aside class="muppet-ui" aria-label="Ajustar muppet">
-    <h3 class="muppet-ui__title">Muppet</h3>
+  <aside class="muppet-ui" aria-label="Ajustar espaciado de galería">
+    <h3 class="muppet-ui__title">Gallery Spacing</h3>
     <label class="muppet-ui__row">
-      <span>Right (px)</span>
-      <input type="number" id="muppet-right" value="-54" />
-    </label>
-    <label class="muppet-ui__row">
-      <span>Bottom (px)</span>
-      <input type="number" id="muppet-bottom" value="-52" />
-    </label>
-    <label class="muppet-ui__row">
-      <span>Tamaño (px)</span>
-      <input type="number" id="muppet-size" value="140" min="40" />
+      <span>Offset Y (px)</span>
+      <input type="number" id="gallery-offset-y" value="40" />
     </label>
     <label class="muppet-ui__row">
       <span>Gap cards (px)</span>
-      <input type="number" id="grid-gap" value="56" min="0" />
+      <input type="number" id="grid-gap" value="25" min="0" />
     </label>
   </aside>
 
@@ -533,6 +599,26 @@
     <span class="settings-toggle__label">UI</span>
   </button>
 
+  <!-- Stripe SDK -->
+  <script src="https://js.stripe.com/v3/"></script>
+  
+  <!-- Stripe Config (replace with your publishable key) -->
+  <script src="stripe-config.js"></script>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  
+  <!-- Firebase Config (replace with your credentials) -->
+  <script src="firebase-config.js"></script>
+  
+  <!-- Auth Handler -->
+  <script src="auth.js"></script>
+  
+  <!-- Stripe Checkout Handler -->
+  <script src="stripe-checkout.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
@@ -564,17 +650,13 @@
 
     (function muppetControls() {
       const root = document.documentElement;
-      const rightInput = document.getElementById("muppet-right");
-      const bottomInput = document.getElementById("muppet-bottom");
-      const sizeInput = document.getElementById("muppet-size");
+      const galleryOffsetYInput = document.getElementById("gallery-offset-y");
       const gapInput = document.getElementById("grid-gap");
       function apply() {
-        root.style.setProperty("--muppet-right", (rightInput.value | 0) + "px");
-        root.style.setProperty("--muppet-bottom", (bottomInput.value | 0) + "px");
-        root.style.setProperty("--muppet-size", (sizeInput.value | 0) + "px");
+        root.style.setProperty("--gallery-offset-y", (galleryOffsetYInput.value | 0) + "px");
         root.style.setProperty("--grid-gap", (gapInput.value | 0) + "px");
       }
-      [rightInput, bottomInput, sizeInput, gapInput].forEach((el) => {
+      [galleryOffsetYInput, gapInput].forEach((el) => {
         el.addEventListener("input", apply);
         el.addEventListener("change", apply);
       });
@@ -742,6 +824,8 @@
       );
       let triggerArmed = true;
       let inverseArmed = false;
+      let wasInGalleryThreshold = false;
+      let wasInHeroThreshold = false;
 
       const toPct = (value) => `${Math.round(value * 100)}%`;
       const setText = (el, value) => {
@@ -765,44 +849,130 @@
         else if (scrollY < lastScrollY) direction = "up";
 
         const triggerCheck = document.getElementById("kf-trigger-enable");
-        const thresholdEl = document.getElementById("kf-trigger-threshold");
+        const thresholdPxEl = document.getElementById("kf-trigger-threshold-px");
         const targetEl = document.getElementById("kf-trigger-target");
-        if (triggerCheck && triggerCheck.checked && thresholdEl && targetEl) {
-          const thresholdRaw = parseFloat(thresholdEl.value);
+        const heroAnchorEl = document.getElementById("kf-trigger-hero-anchor");
+        const galleryAnchor = document.getElementById("gallery-anchor");
+        const heroAnchor = document.getElementById("hero-anchor");
+        
+        // Update hero anchor position (independent of trigger state)
+        let heroAnchorPosition = 0;
+        if (heroAnchorEl && heroAnchor) {
+          const heroAnchorRaw = parseFloat(heroAnchorEl.value);
+          const heroAnchorPct =
+            Math.max(0, Math.min(100, Number.isFinite(heroAnchorRaw) ? heroAnchorRaw : 0)) / 100;
+          heroAnchorPosition = heroAnchorPct * heroEnd;
+          heroAnchor.style.top = `${heroAnchorPosition}px`;
+        }
+        
+        if (triggerCheck && triggerCheck.checked && thresholdPxEl && targetEl && heroAnchor) {
+          const thresholdPx = parseFloat(thresholdPxEl.value);
+          const thresholdPxValue = Number.isFinite(thresholdPx) ? thresholdPx : 50;
           const targetRaw = parseFloat(targetEl.value);
-          const thresholdPct =
-            Math.max(0, Math.min(100, Number.isFinite(thresholdRaw) ? thresholdRaw : 5)) / 100;
           const targetPct =
             Math.max(0, Math.min(100, Number.isFinite(targetRaw) ? targetRaw : 100)) / 100;
 
-          if (heroProgress <= thresholdPct) triggerArmed = true;
+          // Update hero threshold lines (IDA: hero -> gallery)
+          const heroThresholdAbove = heroAnchor.querySelector('.hero-anchor__threshold--above');
+          const heroThresholdBelow = heroAnchor.querySelector('.hero-anchor__threshold--below');
+          if (heroThresholdAbove) {
+            heroThresholdAbove.style.bottom = `${thresholdPxValue}px`;
+          }
+          if (heroThresholdBelow) {
+            heroThresholdBelow.style.top = `${thresholdPxValue}px`;
+          }
 
-          if (direction === "down" && heroProgress > thresholdPct && triggerArmed) {
-            triggerArmed = false;
-            const targetScroll = Math.round(targetPct * heroEnd);
-            window.scrollTo({ top: targetScroll, behavior: "smooth" });
+          // Update gallery anchor position (destination)
+          const galleryAnchorPosition = targetPct * heroEnd;
+          if (galleryAnchor) {
+            galleryAnchor.style.top = `${galleryAnchorPosition}px`;
+          }
+
+          // IDA: el trigger se evalua saliendo del rango del HERO anchor
+          const viewportTop = window.scrollY;
+          const thresholdTop = heroAnchorPosition - thresholdPxValue;
+          const thresholdBottom = heroAnchorPosition + thresholdPxValue;
+
+          // Check if viewport top is currently within the threshold range
+          const isInThreshold = viewportTop >= thresholdTop && viewportTop <= thresholdBottom;
+
+          // Reset trigger if viewport top is within the threshold range
+          if (isInThreshold) {
+            triggerArmed = true;
+            wasInGalleryThreshold = true;
+          } else {
+            // Solo dispara al salir por abajo del rango del hero (scroll hacia abajo)
+            if (wasInGalleryThreshold && direction === "down" && viewportTop > thresholdBottom && triggerArmed) {
+              triggerArmed = false;
+              wasInGalleryThreshold = false;
+              const targetScroll = Math.round(targetPct * heroEnd);
+              window.scrollTo({ top: targetScroll, behavior: "smooth" });
+            } else if (!isInThreshold) {
+              // We're outside, but weren't inside before, so reset the flag
+              wasInGalleryThreshold = false;
+            }
           }
         } else {
           triggerArmed = true;
+          // Show anchors at default positions even if trigger is disabled
+          if (galleryAnchor) {
+            galleryAnchor.style.display = 'block';
+            galleryAnchor.style.top = `${heroEnd}px`;
+          }
+          if (heroAnchor && heroAnchorEl) {
+            const heroAnchorRaw = parseFloat(heroAnchorEl.value);
+            const heroAnchorPct =
+              Math.max(0, Math.min(100, Number.isFinite(heroAnchorRaw) ? heroAnchorRaw : 0)) / 100;
+            const heroAnchorPosition = heroAnchorPct * heroEnd;
+            heroAnchor.style.top = `${heroAnchorPosition}px`;
+          }
         }
 
         const inverseCheck = document.getElementById("kf-trigger-inverse");
-        const inverseLeaveEl = document.getElementById("kf-trigger-inverse-leave");
-        const inverseGobackEl = document.getElementById("kf-trigger-inverse-goback");
-        if (inverseCheck && inverseCheck.checked && inverseLeaveEl && inverseGobackEl) {
-          const leaveRaw = parseFloat(inverseLeaveEl.value);
-          const gobackRaw = parseFloat(inverseGobackEl.value);
-          const leavePct =
-            Math.max(0, Math.min(100, Number.isFinite(leaveRaw) ? leaveRaw : 100)) / 100;
-          const gobackPct =
-            Math.max(0, Math.min(100, Number.isFinite(gobackRaw) ? gobackRaw : 0)) / 100;
+        const inverseThresholdPxEl = document.getElementById("kf-trigger-inverse-threshold-px");
+        if (inverseCheck && inverseCheck.checked && inverseThresholdPxEl && heroAnchorEl) {
+          const inverseThresholdPx = parseFloat(inverseThresholdPxEl.value);
+          const inverseThresholdPxValue = Number.isFinite(inverseThresholdPx) ? inverseThresholdPx : 20;
+          
+          // VUELTA: usa rango del GALLERY anchor y vuelve al hero anchor
+          const targetRaw = parseFloat(targetEl ? targetEl.value : "100");
+          const targetPct =
+            Math.max(0, Math.min(100, Number.isFinite(targetRaw) ? targetRaw : 100)) / 100;
+          const galleryAnchorPosition = targetPct * heroEnd;
+          const gobackScroll = Math.round(heroAnchorPosition);
 
-          if (heroProgress >= leavePct) inverseArmed = true;
+          if (galleryAnchor) {
+            const thresholdAbove = galleryAnchor.querySelector('.gallery-anchor__threshold--above');
+            const thresholdBelow = galleryAnchor.querySelector('.gallery-anchor__threshold--below');
+            if (thresholdAbove) {
+              thresholdAbove.style.bottom = `${inverseThresholdPxValue}px`;
+            }
+            if (thresholdBelow) {
+              thresholdBelow.style.top = `${inverseThresholdPxValue}px`;
+            }
+          }
 
-          if (direction === "up" && heroProgress < leavePct && inverseArmed) {
-            inverseArmed = false;
-            const gobackScroll = Math.round(gobackPct * heroEnd);
-            window.scrollTo({ top: gobackScroll, behavior: "smooth" });
+          const viewportTop = window.scrollY;
+          const thresholdTop = galleryAnchorPosition - inverseThresholdPxValue;
+          const thresholdBottom = galleryAnchorPosition + inverseThresholdPxValue;
+
+          // Check if viewport top is currently within the threshold range
+          const isInThreshold = viewportTop >= thresholdTop && viewportTop <= thresholdBottom;
+
+          // Reset trigger if viewport top is within the threshold range
+          if (isInThreshold) {
+            inverseArmed = true;
+            wasInHeroThreshold = true;
+          } else {
+            // Solo dispara al salir por arriba del rango de gallery (scroll hacia arriba)
+            if (wasInHeroThreshold && direction === "up" && viewportTop < thresholdTop && inverseArmed) {
+              inverseArmed = false;
+              wasInHeroThreshold = false;
+              window.scrollTo({ top: gobackScroll, behavior: "smooth" });
+            } else if (!isInThreshold) {
+              // We're outside, but weren't inside before, so reset the flag
+              wasInHeroThreshold = false;
+            }
           }
         } else {
           inverseArmed = false;
@@ -919,6 +1089,30 @@
       if (typeof ScrollTrigger !== "undefined") {
         ScrollTrigger.addEventListener("refresh", updateScrollDebug);
       }
+      
+      // Update anchors when inputs change
+      const targetEl = document.getElementById("kf-trigger-target");
+      const heroAnchorEl = document.getElementById("kf-trigger-hero-anchor");
+      const thresholdPxEl = document.getElementById("kf-trigger-threshold-px");
+      const inverseThresholdPxEl = document.getElementById("kf-trigger-inverse-threshold-px");
+      
+      if (targetEl) {
+        targetEl.addEventListener("input", updateScrollDebug);
+        targetEl.addEventListener("change", updateScrollDebug);
+      }
+      if (heroAnchorEl) {
+        heroAnchorEl.addEventListener("input", updateScrollDebug);
+        heroAnchorEl.addEventListener("change", updateScrollDebug);
+      }
+      if (thresholdPxEl) {
+        thresholdPxEl.addEventListener("input", updateScrollDebug);
+        thresholdPxEl.addEventListener("change", updateScrollDebug);
+      }
+      if (inverseThresholdPxEl) {
+        inverseThresholdPxEl.addEventListener("input", updateScrollDebug);
+        inverseThresholdPxEl.addEventListener("change", updateScrollDebug);
+      }
+      
       updateScrollDebug();
     })();
 
