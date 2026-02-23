@@ -1097,6 +1097,16 @@ body.is-card-expanded .filters {
 }
 
 @media (max-width: 600px) {
+  /* Ocultar paneles de UI en móvil */
+  .hero-overlay-ui,
+  .hero-text-position-ui,
+  .trigger-scroll-ui,
+  .scroll-range-ui,
+  .keyframes-video-ui,
+  .muppet-ui {
+    display: none !important;
+  }
+
   .scroll-ui {
     right: 12px;
     bottom: 12px;
@@ -1104,15 +1114,100 @@ body.is-card-expanded .filters {
     padding: 10px 12px;
     font-size: 11px;
   }
-  .page .grid {
-    padding-top: 32px;
+
+  /* Hero section - ajustes móvil */
+  .hero-section__inner {
+    padding: 20px;
   }
+
+  .hero-section__headline {
+    font-size: 2rem;
+  }
+
+  .hero-section__subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-section__ctas {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-section__cta {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Auth header - mejor espaciado */
+  .auth-header {
+    padding: 12px 16px;
+  }
+
+  .auth-header__btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .auth-header__email {
+    font-size: 13px;
+  }
+
+  /* Login modal - mejor tamaño */
+  .login-modal__content {
+    width: 90%;
+    max-width: 400px;
+    padding: 24px 20px;
+  }
+
+  .login-modal__title {
+    font-size: 1.5rem;
+  }
+
+  .login-modal__btn {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  /* Page y grid - mejor espaciado */
+  .page {
+    padding: 24px 16px 48px;
+  }
+
+  .page .grid {
+    padding-top: 24px;
+    max-width: 100%;
+  }
+
   .grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
+
+  /* Cards - mejor tamaño en móvil */
+  .card {
+    min-height: 200px;
+  }
+
   .card.is-expanded {
     grid-column: span 1;
     grid-row: span 2;
+    min-height: 400px;
+  }
+
+  .card-tag {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .card-front p,
+  .card-back-content p {
+    font-size: 14px;
+  }
+
+  /* Anclas - ocultar labels en móvil para no molestar */
+  .hero-anchor__label,
+  .gallery-anchor__label {
+    display: none;
   }
 }
 
