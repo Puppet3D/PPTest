@@ -817,7 +817,11 @@
         }, { once: true });
       }
 
-      const getScrollDistance = () => Math.max(window.innerHeight, 1);
+      // Use the rendered hero height so JS targets match CSS viewport sizing on mobile (svh/dvh).
+      const getScrollDistance = () => {
+        const h = hero ? Math.round(hero.getBoundingClientRect().height) : window.innerHeight;
+        return Math.max(h, 1);
+      };
       let lastScrollY = Math.round(window.scrollY || 0);
       let lastHeroProgress = Math.min(
         1,
