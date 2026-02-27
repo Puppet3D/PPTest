@@ -57,7 +57,7 @@ html {
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
@@ -1685,6 +1685,10 @@ body.is-card-expanded .filters {
   padding: 40px 20px;
   margin-top: 80px;
   border-top: 1px solid rgba(233, 196, 106, 0.2);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 120px;
 }
 
 .site-footer__content {
