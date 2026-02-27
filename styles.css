@@ -1675,3 +1675,67 @@ body.is-card-expanded .filters {
   background: #4caf50;
   color: #fff;
 }
+
+/* ============================================
+   SITE FOOTER
+   ============================================ */
+.site-footer {
+  background: #242424;
+  color: #d4d4d4;
+  padding: 40px 20px;
+  margin-top: 80px;
+  border-top: 1px solid rgba(233, 196, 106, 0.2);
+}
+
+.site-footer__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.site-footer__copyright {
+  font-size: 14px;
+  color: rgba(212, 212, 212, 0.7);
+}
+
+.site-footer__copyright p {
+  margin: 0;
+}
+
+.site-footer__links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.site-footer__links a {
+  color: #d4d4d4;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.site-footer__links a:hover {
+  color: #e9c46a;
+}
+
+.site-footer__separator {
+  color: rgba(212, 212, 212, 0.3);
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .site-footer__content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .site-footer__links {
+    justify-content: center;
+  }
+}
